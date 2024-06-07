@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Information Technology subject2s</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: gray;
+    }
+    
+    header {
+      background-image: url('/static/images/it.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      height: 200px;
+      text-align: center;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+    }
+    
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+          }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    /* Media queries for responsiveness */
+    @media only screen and (max-width: 600px) {
+      /* Adjust styles for smaller screens */
+      header {
+        font-size: 24px;
+      }
+      
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Information Technology</h1>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>subject</th>
+        <th>Course Code</th> <!-- New column -->
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Legal</a></td>
+        
+        <td>BIT221</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">leading businesses</a></td>
+        <td>BIT222</td>
+        <td>Organizing and storing data for efficient access and manipulation</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">web 1</a></td>
+        <td>BIT381</td>
+        <td>a style of programming characterized by the identification of classes of objects closely linked with the methods (functions) with which they are associated</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Web 2</a></td>
+        <td>BIT481</td>
+        <td>configuring network elements such as routers, switches, and WLC-wireless LAN controllers; maintaining network devices; and recognizing primary security threats</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Syber Security</a></td>
+        
+        <td>CYS230</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Legal</a></td>
+        
+        <td>BIT221</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">leading businesses</a></td>
+        <td>BIT222</td>
+        <td>Organizing and storing data for efficient access and manipulation</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">web 1</a></td>
+        <td>BIT381</td>
+        <td>a style of programming characterized by the identification of classes of objects closely linked with the methods (functions) with which they are associated</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Web 2</a></td>
+        <td>BIT481</td>
+        <td>configuring network elements such as routers, switches, and WLC-wireless LAN controllers; maintaining network devices; and recognizing primary security threats</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Syber Security</a></td>
+        
+        <td>CYS230</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Legal</a></td>
+        
+        <td>BIT221</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">leading businesses</a></td>
+        <td>BIT222</td>
+        <td>Organizing and storing data for efficient access and manipulation</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">web 1</a></td>
+        <td>BIT381</td>
+        <td>a style of programming characterized by the identification of classes of objects closely linked with the methods (functions) with which they are associated</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Web 2</a></td>
+        <td>BIT481</td>
+        <td>configuring network elements such as routers, switches, and WLC-wireless LAN controllers; maintaining network devices; and recognizing primary security threats</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Syber Security</a></td>
+        
+        <td>CYS230</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Legal</a></td>
+        
+        <td>BIT221</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">leading businesses</a></td>
+        <td>BIT222</td>
+        <td>Organizing and storing data for efficient access and manipulation</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">web 1</a></td>
+        <td>BIT381</td>
+        <td>a style of programming characterized by the identification of classes of objects closely linked with the methods (functions) with which they are associated</td>
+      </tr>
+      <tr>
+        <td><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Web 2</a></td>
+        <td>BIT481</td>
+        <td>configuring network elements such as routers, switches, and WLC-wireless LAN controllers; maintaining network devices; and recognizing primary security threats</td>
+      </tr>
+       <tr>
+        <td ><a style="text-decoration: none;" href="{% url  'subject2' %}" target="_blank">Syber Security</a></td>
+        
+        <td>CYS230</td> <!-- Corresponding course code -->
+        <td>Study of efficient problem-solving methods</td>
+      </tr>
+      
+      <!-- Add more rows for other subject2s -->
+    </tbody>
+  </table>
+  <div style=" background-image: url('/static/images/it.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      height: 200px;
+      text-align: center; ">
+    
+  </div>
+</body>
+</html>

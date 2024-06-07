@@ -1,0 +1,260 @@
+Database Systems:Design, Implementation, and ManagementTenth Edition
+Chapter 11
+Database Performance Tuning and Query Optimization
+
+Objectives
+In this chapter, you will learn:
+Basic database performance-tuning concepts
+How a DBMS processes SQL queries
+About the importance of indexes in query processing
+
+Objectives (cont’d.)
+About the types of decisions the query optimizer has to make
+Some common practices used to write efficient SQL code
+How to formulate queries and tune the DBMS for optimal performance
+
+Database Performance-Tuning Concepts
+Goal of database performance is to execute queries as fast as possible
+Database performance tuning
+Set of activities and procedures designed to reduce response time of database system
+All factors must operate at optimum level with minimal bottlenecks
+Good database performance starts with good database design
+
+Performance Tuning: Client and Server
+Client side
+Generate SQL query that returns correct answer in least amount of time
+Using minimum amount of resources at server
+SQL performance tuning
+Server side
+DBMS environment configured to respond to clients’ requests as fast as possible
+Optimum use of existing resources
+DBMS performance tuning
+
+DBMS Architecture
+All data in database are stored in data files
+Data files
+Automatically expand in predefined increments known as extends
+Grouped in file groups or table spaces
+Table space or file group
+Logical grouping of several data files that store data with similar characteristics
+
+DBMS Architecture (cont’d.)
+Data cache or buffer cache: shared, reserved memory area
+Stores most recently accessed data blocks in RAM
+SQL cache or procedure cache: stores most recently executed SQL statements
+Also PL/SQL procedures, including triggers and functions
+DBMS retrieves data from permanent storage and places it in RAM
+
+DBMS Architecture (cont’d.)
+Input/output request: low-level data access operation to/from computer devices
+Data cache is faster than data in data files 
+DBMS does not wait for hard disk to retrieve data
+Majority of performance-tuning activities focus on minimizing I/O operations
+Typical DBMS processes:
+Listener, user, scheduler, lock manager, optimizer
+
+Database Query Optimization Modes
+Automatic query optimization 
+DBMS finds the most cost-effective access path without user intervention
+Manual query optimization
+Requires that the optimization be selected and scheduled by the end user or programmer
+Static query optimization 
+Takes place at compilation time
+Dynamic query optimization 
+Takes place at execution time
+
+Database Query Optimization Modes (cont’d.)
+Statistically based query optimization algorithm
+Uses statistical information about the database
+Dynamic statistical generation mode
+Manual statistical generation mode
+Rule-based query optimization algorithm 
+Based on a set of user-defined rules to determine the best query access strategy
+
+Database Statistics
+Measurements about database objects and available resources:
+Tables
+Indexes
+Number of processors used
+Processor speed
+Temporary space available
+
+Database Statistics (cont’d.)
+Make critical decisions about improving query processing efficiency
+Can be gathered manually by DBA or automatically by DBMS
+
+Query Processing
+DBMS processes queries in three phases
+Parsing
+DBMS parses the query and chooses the most efficient access/execution plan
+Execution
+DBMS executes the query using chosen execution plan
+Fetching
+DBMS fetches the data and sends the result back to the client
+
+SQL Parsing Phase
+Break down query into smaller units 
+Transform original SQL query into slightly different version of original SQL code
+Fully equivalent
+Optimized query results are always the same as original query
+More efficient
+Optimized query will almost always execute faster than original query
+
+SQL Parsing Phase (cont’d.)
+Query optimizer analyzes SQL query and finds most efficient way to access data
+Validated for syntax compliance
+Validated against data dictionary
+Tables and column names are correct
+User has proper access rights
+Analyzed and decomposed into components
+Optimized
+Prepared for execution
+
+SQL Parsing Phase (cont’d.)
+Access plans are DBMS-specific
+Translate client’s SQL query into a series of complex I/O operations
+Required to read the data from the physical data files and generate result set
+DBMS checks if access plan already exists for query in SQL cache
+DBMS reuses the access plan to save time
+If not, optimizer evaluates various plans
+Chosen plan placed in SQL cache
+
+SQL Execution PhaseSQL Fetching Phase
+All I/O operations indicated in access plan are executed
+Locks acquired
+Data retrieved and placed in data cache
+Transaction management commands processed
+Rows of resulting query result set are returned to client
+DBMS may use temporary table space to store temporary data
+
+Query Processing Bottlenecks
+Delay introduced in the processing of an I/O operation that slows the system
+CPU
+RAM
+Hard disk
+Network
+Application code
+
+Indexes and Query Optimization
+Indexes
+Crucial in speeding up data access
+Facilitate searching, sorting, and using aggregate functions as well as join operations
+Ordered set of values that contains index key and pointers
+More efficient to use index to access table than to scan all rows in table sequentially
+
+Indexes and Query Optimization (cont’d.)
+Data sparsity: number of different values a column could possibly have
+Indexes implemented using:
+Hash indexes
+B-tree indexes
+Bitmap indexes
+DBMSs determine best type of index to use
+
+Optimizer Choices
+Rule-based optimizer
+Preset rules and points
+Rules assign a fixed cost to each operation
+Cost-based optimizer
+Algorithms based on statistics about objects being accessed 
+Adds up processing cost, I/O costs, resource costs to derive total cost
+
+Using Hints to Affect Optimizer Choices
+Optimizer might not choose best plan
+Makes decisions based on existing statistics
+Statistics may be old
+Might choose less-efficient decisions
+Optimizer hints: special instructions for the optimizer embedded in the SQL command text
+
+SQL Performance Tuning
+Evaluated from client perspective
+Most current relational DBMSs perform automatic query optimization at the server end
+Most SQL performance optimization techniques are DBMS-specific
+Rarely portable
+Majority of performance problems are related to poorly written SQL code
+Carefully written query usually outperforms a poorly written query
+
+Index Selectivity
+Indexes are used when:
+Indexed column appears by itself in search criteria of WHERE or HAVING clause
+Indexed column appears by itself in GROUP BY or ORDER BY clause
+MAX or MIN function is applied to indexed column
+Data sparsity on indexed column is high
+Measure of how likely an index will be used
+
+Index Selectivity (cont’d.)
+General guidelines for indexes:
+Create indexes for each attribute in WHERE, HAVING, ORDER BY, or GROUP BY clause
+Do not use in small tables or tables with low sparsity
+Declare primary and foreign keys so optimizer can use indexes in join operations
+Declare indexes in join columns other than PK/FK
+
+Conditional Expressions
+Normally expressed within WHERE or HAVING clauses of SQL statement
+Restricts output of query to only rows matching conditional criteria
+
+Conditional Expressions (cont’d.)
+Common practices for efficient SQL:
+Use simple columns or literals in conditionals
+Numeric field comparisons are faster
+Equality comparisons are faster than inequality
+Transform conditional expressions to use literals
+Write equality conditions first
+AND: use condition most likely to be false first
+OR: use condition most likely to be true first
+Avoid NOT
+
+Query Formulation
+Identify what columns and computations are required
+Identify source tables
+Determine how to join tables
+Determine what selection criteria is needed
+Determine in what order to display output
+
+DBMS Performance Tuning
+Includes managing DBMS processes in primary memory and structures in physical storage
+DBMS performance tuning at server end focuses on setting parameters used for the:
+Data cache
+SQL cache
+Sort cache
+Optimizer mode
+
+DBMS Performance Tuning (cont’d.)
+Some general recommendations for creation of databases:
+Use RAID (Redundant Array of Independent Disks) to provide balance between performance and fault tolerance
+Minimize disk contention
+Put high-usage tables in their own table spaces
+Assign separate data files in separate storage volumes for indexes, system, and high-usage tables
+
+DBMS Performance Tuning (cont’d.)
+Take advantage of table storage organizations in database
+Partition tables based on usage
+Use denormalized tables where appropriate
+Store computed and aggregate attributes in tables
+
+Query Optimization Example
+Example illustrates how query optimizer works
+Based on QOVENDOR and QOPRODUCT tables
+Uses Oracle SQL*Plus 
+
+Summary
+Database performance tuning 
+Refers to activities to ensure query is processed in minimum amount of time
+SQL performance tuning 
+Refers to activities on client side to generate SQL code
+Returns correct answer in least amount of time 
+Uses minimum amount of resources at server end
+DBMS architecture is represented by processes and structures used to manage a database
+
+Summary (cont’d.)
+Database statistics refers to measurements gathered by the DBMS 
+Describe snapshot of database objects’ characteristics
+DBMS processes queries in three phases: parsing, execution, and fetching
+Indexes are crucial in process that speeds up data access
+
+Summary (cont’d.)
+During query optimization, DBMS chooses:
+Indexes to use, how to perform join operations, table to use first, etc.
+Hints change optimizer mode for current SQL statement
+SQL performance tuning deals with writing queries that make good use of statistics
+Query formulation deals with translating business questions into specific SQL code
+

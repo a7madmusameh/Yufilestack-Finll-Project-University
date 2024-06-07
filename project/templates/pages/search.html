@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subject</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: gray;
+    }
+    
+    header {
+      background-image:  url('/static/images/it.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      height: 200px;
+      text-align: center;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+    }
+    
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+          }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    /* Media queries for responsiveness */
+    @media only screen and (max-width: 600px) {
+      /* Adjust styles for smaller screens */
+      header {
+        font-size: 24px;
+      }
+      
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Query Results</h1>
+    <h2>Click on the file name to download it</h2>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>File Name</th>
+        <th>File Size</th> <!-- New column -->
+        <th>download Count</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>
+            {% for i in data %}
+                <a style="text-decoration: none;" href="{{ i.files.url }}" target="_blank" download>
+                  {{ i.files }}
+                </a>
+                <br/><br/>
+          {% endfor %}
+        </td>
+        
+        <td>99 kb</td> <!-- Corresponding course code -->
+        <td>515</td>
+        
+      </tr>
+      <!-- Add more rows for other subjects -->
+    </tbody>
+  </table>
+  <div style=" background-image:  url('/static/images/it.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      height: 400px;
+      text-align: center; ">
+    
+  </div>
+</body>
+</html>

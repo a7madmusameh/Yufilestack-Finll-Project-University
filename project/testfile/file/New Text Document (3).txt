@@ -1,0 +1,36 @@
+        if head == None or head.next == None:
+            return head
+        else:
+            p = head.next
+            t = None
+            h = head
+            while p.next != None and h.next != None:
+                if p.val == h.val:
+                    p = p.next
+                elif h.val < p.val:
+                    t = h
+                    p = p.next
+                else:
+                    t = h
+                    h = h.next
+            if p.next == None:
+                if  h.val == p.val :   
+                    temp = head = ListNode(h.val)
+                    t.next = p
+                elif h.val < p.val :
+                    temp = head = ListNode(h.val)
+                    t.next = p
+                else:
+                    temp = head = ListNode(p.val)
+                    t.next = h
+                    
+            else:
+                if  h.val == p.val :   
+                    temp = head = ListNode(p.val)
+                    t.next = h
+                elif h.val < p.val :
+                    temp = head = ListNode(h.val)
+                    t.next = p
+                else:
+                    temp = head = ListNode(p.val)
+                    t.next = h

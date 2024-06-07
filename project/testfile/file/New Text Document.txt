@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html><body>
+<p id="id-1"></p>
+<script>
+var x = 10;
+{
+var x = 2;
+}
+document.getElementByid("id-1").innerHTML = x;
+</script></body></html>
